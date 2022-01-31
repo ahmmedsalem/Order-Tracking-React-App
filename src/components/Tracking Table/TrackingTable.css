@@ -1,0 +1,37 @@
+.tracking-table {
+    border: 1px solid #eee;
+    margin-top: 3%;
+    border-radius: 10px;
+}
+
+.content {
+    margin-bottom: 20px;
+    padding: 35px 0;
+    flex: 0 0 100%;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .status {
+        flex-direction: column;
+        padding-right: 15px;
+    }
+
+    .status-info > p {
+        margin-bottom: 14px;
+        margin-top: 0;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1064px) {
+    .status {
+        flex-direction: column;
+        padding-right: 15px;
+    }
+
+    .status-info > p {
+        margin-bottom: 14px;
+        margin-top: 0;
+        font-size: 14px;
+    }
+}

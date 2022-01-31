@@ -1,0 +1,96 @@
+:root {
+  --red: #ff0000;
+  --green: #36b600;
+  --yellow: #f9ba02;
+  --bg-light-gray: #fafafa;
+  --tracking-gray: #eeeeee;
+  --main-color: #101010;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: var(--main-color);
+    background-color: var(--bg-color);
+  }
+
+  a {
+    color: var(--main-color);
+    text-decoration: none;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  h1, h2, h3, h4, h5, h6, p {
+    text-align: right;
+  }
+
+  .red {
+    color: var(--red);
+  }
+
+  .green {
+    color: var(--green);
+  }
+
+  .yellow {
+    color: var(--yellow);
+  }
+
+  .container {
+    width: 90%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .MuiStepLabel-label {
+    font-family: 'Cairo', sans-serif !important;
+    font-weight: bold !important;
+  }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+@media (max-width: 600px) {
+  .row {
+    margin: 0;
+  }
+
+  .container {
+      padding: 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1064px) {
+    
+  body {
+      font-size: 13px;
+  }
+
+  
+  .row {
+    margin: 0;
+  }
+
+  .container {
+      padding: 0;
+  }
+
+}

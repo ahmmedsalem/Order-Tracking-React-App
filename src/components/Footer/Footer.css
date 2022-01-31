@@ -1,0 +1,18 @@
+/* FOOTER  */
+
+footer {
+    margin-top: 50px;
+    width: 100%;
+    background-color: var(--bg-light-gray);
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border-top: 1px solid var(--tracking-gray);
+}
+
+footer p {
+    font-weight: 400;
+    font-size: 13px;
+}

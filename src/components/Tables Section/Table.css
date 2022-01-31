@@ -1,0 +1,22 @@
+table {
+    border: var(--tracking-gray) 1px solid;
+    width: 100%;
+    margin: 0 0 15px 0;
+    border-spacing: 0;
+    border-radius: 10px;
+}
+
+th, td {
+    font-size: 16px;
+    padding: 18px 24px;
+    text-align: right;
+    border-bottom: 1px solid var(--tracking-gray);
+}
+
+.table-header {
+    background-color: var(--bg-light-gray);
+}
+
+td > span {
+    font-size: 11px;
+}

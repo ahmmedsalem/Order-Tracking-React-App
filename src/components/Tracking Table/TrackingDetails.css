@@ -1,0 +1,25 @@
+.status {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--tracking-gray);
+    flex-direction: row-reverse;
+}
+
+.status-info {
+    text-align: right;
+    color: var(--main-color);
+}
+
+.status-info > span {
+    opacity: 0.5;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.status-info > p {
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 14px;
+}
