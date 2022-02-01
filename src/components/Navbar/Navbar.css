@@ -37,60 +37,6 @@ nav > .right > .logo > img {
     opacity: 0.7;
 }
 
-/* SearchBar */
-
-.help-tip{
-    position: absolute;
-    top: 18px;
-    left: 23%;
-    text-align: center;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    cursor: default;
-}
-    
-.help-tip:hover form{
-    display:block;
-    transform-origin: 100% 0%;
-    -webkit-animation: fadeIn 0.3s ease-in-out;
-    animation: fadeIn 0.3s ease-in-out;
-}
-    
-.help-tip form{
-    display: none;
-    text-align: left;
-    background-color: var(--tracking-gray);
-    opacity: 0.8;
-    padding: 25px;
-    width: 250px;
-    position: absolute;
-    border-radius: 3px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-    right: -25px;
-    color: #FFF;
-    font-size: 13px;
-    line-height: 1.4;
-    top: 100%;
-}
-
-.help-tip form > input[type = "number"] {
-    padding: 8px 10px 8px 58px ;
-    text-align: right;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-}
-
-
 /* MOBILE RESPONSIVE */
 
 @media (max-width: 600px) {
@@ -110,35 +56,41 @@ input[type=number] {
     }
 
     .nav ul.main-menu {
-        display: flex;
+        display: none;
         flex-direction: column-reverse;
-        justify-content: flex-end;
+        justify-content: center;
         position: absolute;
-        top: 0;
+        top: 89px;
         right: 0;
-        background: #f2f2f2;
-        width: 50%;
-        height: 100%;
-        transform: translateX(-600px);
-        border-right: #ccc 1px solid;
-        opacity: 0.9;
+        background: #fff;
+        width: 100%;
+        height: 276px;
+        border-top: var(--red) 2px solid;
+        opacity: 1;
         padding: 30px;
         transition: transform 0.5s ease-in-out;
-        z-index: 100;
+        z-index: 3;
+        margin: 0 auto;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     }
 
-    .nav ul.main-menu.show li {
-        padding: 5px;
-        border-bottom: #ccc solid 1px;
+    .nav ul.main-menu.show li a {
+        border-bottom: var(--tracking-gray) solid 1px;
+        width: 90%;
         font-size: 12px;
+        text-align: center;
     }
 
-    .nav ul.main-menu.show li:last-child {
-        border-bottom: 0px;
+    .nav ul.main-menu.show li a {
+        border-bottom: var(--tracking-gray) solid 1px;
+        width: 90%;
+        font-size: 12px;
+        text-align: center;
     }
 
     .nav ul.main-menu.show {
-        transform: translateX(20px);
+        display: flex;        
+        transition: height 1s ease-in;
     }
 
     .nav .logo {

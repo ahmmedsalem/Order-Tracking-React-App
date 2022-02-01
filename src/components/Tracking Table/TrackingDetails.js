@@ -2,31 +2,31 @@ import React from 'react';
 import './TrackingDetails.css';
 import moment from 'moment';
 import { useAPI } from "./../Context/ContextAPI";
+import SwitchLanguage from '../TranslationState';
 
 
 const TrackingDetails = () => {
 
+
   const { currentStatus, trackingNum, promiseDate } = useAPI();
   
-  const state = currentStatus.state;
+  const currentState = currentStatus.state;
   const lastUpdate = currentStatus.timestamp;
 
-  const lastUpdateFormated = moment(lastUpdate).format('dddd DD/MM/YYYY H:mma');
+  const lastUpdateFormated = moment(lastUpdate).format('dddd DD/MM/YYYY h:mma');
   const promiseTimeFormated = moment(promiseDate).format('d MMMM YYYY');
 
-  console.log();
 
   const coloringStatus = () => {
-    if(state === 'DELIVERED') {
+    if(currentState === 'DELIVERED') {
       return "green";
     } else 
-    if (state === 'CANCELLED' || state === "DELIVERED_TO_SENDER") {
+    if (currentState === 'CANCELLED' || currentState === "DELIVERED_TO_SENDER") {
       return "red";
     } else {
       return "yellow";
     }
   }
-
 
     return ( 
       <div className="status">
@@ -34,7 +34,9 @@ const TrackingDetails = () => {
           <span>
             {trackingNum} رقم الشحنة
           </span>
-          <p className={coloringStatus()}>{state}</p>
+          <p className={coloringStatus()}>
+            <SwitchLanguage />
+          </p>
         </div>
         <div className="status-info">
           <span>

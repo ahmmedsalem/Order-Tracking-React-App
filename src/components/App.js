@@ -1,19 +1,10 @@
 import React from 'react';
-import Navbar from './Navbar/Navbar';
-import TrackingTable from './Tracking Table/TrackingTable';
-import TableSection from './Tables Section/TableSection';
-import Footer from './Footer/Footer';
-import { APIContextProvider } from './Context/ContextAPI';
+import OrderTracking from './../Pages/OrderTracking';
 
 const App = () => {
 
   return ( 
-    <APIContextProvider>
-      <Navbar />
-      <TrackingTable />
-      <TableSection />
-      <Footer />
-    </APIContextProvider>
+    <OrderTracking />
   );
 }
  

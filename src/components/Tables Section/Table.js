@@ -22,8 +22,34 @@ const Table = () => {
   
     const renderedStates = transitEvents.map((transitEvent) => {
 
-    const formatTime = moment(transitEvent.timestamp).format('H:mma');
+    const update = transitEvent.state;
+    const formatTime = moment(transitEvent.timestamp).format('h:mma');
     const formatDate = moment(transitEvent.timestamp).format('DD/MM/YYYY');
+
+
+
+    function arabicUpdates() {
+      switch(update) {
+        case 'TICKET_CREATED':
+          return 'تم إنشاء الشحنة';
+        case 'PACKAGE_RECEIVED':
+          return 'تم استلام الشحنة من التاجر';
+        case 'IN_TRANSIT':
+          return 'في مرحلة الإنتقال';
+        case 'NOT_YET_SHIPPED':
+          return 'لم يتم شحن المنتج';
+        case 'OUT_FOR_DELIVERY':
+          return 'الشحنة خرجت للتسليم';
+        case 'WAITING_FOR_CUSTOMER_ACTION':
+          return 'في إنتظار العميل';
+        case 'DELIVERED_TO_SENDER':
+          return 'تم إلغاء الشحنة';
+        case 'DELIVERED':
+          return 'تم التوصيل';
+        default:
+          return 'لا توجد معلومات';
+      }
+    }
 
     return (
       <tr key={transitEvent.timestamp}>
@@ -37,7 +63,7 @@ const Table = () => {
           {formatTime}
         </td>
         <td>
-          {transitEvent.state}<br/>
+          {arabicUpdates()}<br/>
           <span className={coloringStatus()}>{transitEvent.reason}</span>
         </td>
       </tr>

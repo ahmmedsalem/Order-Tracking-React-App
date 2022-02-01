@@ -60,7 +60,12 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   }),
   ...(ownerState.completed && {
     backgroundColor:
-      '#ff0000',
+      'green',
+      transform: 'scale(0.5)',
+  }),
+  ...(ownerState.progress && {
+    backgroundColor:
+      'yellow',
       transform: 'scale(0.5)',
   }),
 }));
@@ -68,12 +73,42 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
 function ColorlibStepIcon(props) {
   const { active, completed, className } = props;
 
-  const icons = {
-    1: <Inventory2Icon/>,
-    2: <AssignmentTurnedInIcon />,
-    3: <LocalShippingIcon  sx={{ transform: 'rotateY(180deg)' }}/>,
-    4: <MarkEmailReadIcon />,
-  };
+  const { currentStatus } = useAPI();
+  const currentstate = currentStatus.state;
+
+  function iconsReplace() {
+    if(currentstate === 'DELIVERED') {
+      return ( {
+        1: <Check/>,
+        2: <Check/>,
+        3: <Check/>,
+        4: <Check/>,
+      })
+    } else if(currentstate === "PACKAGE_RECEIVED" || currentstate === "NOT_YET_SHIPPED" || currentstate === "WAITING_FOR_CUSTOMER_ACTION" || currentstate === "DELIVERED_TO_SENDER") {
+      return ({
+        1: <Check/>,
+        2: <AssignmentTurnedInIcon />,
+        3: <LocalShippingIcon  sx={{ transform: 'rotateY(180deg)' }}/>,
+        4: <MarkEmailReadIcon />,
+      })
+    } else if(currentstate === "OUT_FOR_DELIVERY" || currentstate === "RECEIVED_DELIVERY_LOCATION" || currentstate === "IN_TRANSIT") {
+      return ({
+        1: <Check/>,
+        2: <Check/>,
+        3: <LocalShippingIcon  sx={{ transform: 'rotateY(180deg)' }}/>,
+        4: <MarkEmailReadIcon />,
+      })
+    } else {
+      return ({
+        1: <Inventory2Icon/>,
+        2: <AssignmentTurnedInIcon />,
+        3: <LocalShippingIcon  sx={{ transform: 'rotateY(180deg)' }}/>,
+        4: <MarkEmailReadIcon />,
+      })
+    }
+  }
+
+  const icons = iconsReplace();
 
   return (
     <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
@@ -85,31 +120,39 @@ function ColorlibStepIcon(props) {
 
 const steps = ['تم إنشاء الشحنة', 'تم استلام الشحنة', 'الشحنة خرجت للتسليم', 'تم التسليم'];
 
+
 export default function Tracker() {
   
   const { currentStatus } = useAPI();
-  const state = currentStatus.state;
+  const currentState = currentStatus.state;
 
-  const stepperState = () => {
-    if(state === "TICKET_CREATED") {
-      return 0;
-    } else 
-    if(state === "PACKAGE_RECEIVED" || state === "NOT_YET_SHIPPED" || state === "WAITING_FOR_CUSTOMER_ACTION") {
-      return 1;
-    } else
-    if(state === "OUT_FOR_DELIVERY" || state === "RECEIVED_DELIVERY_LOCATION" || state === "DELIVERED_TO_SENDER" || state === "IN_TRANSIT") {
-      return 2;
-    } else 
-    if(state === "DELIVERED") {
-      return 5;
-    } else {
-      return -1;
+  function stepperState() {
+
+    switch(currentState) {
+      case 'TICKET_CREATED':
+        return 0;
+      case 'PACKAGE_RECEIVED':
+        return 1;
+      case 'IN_TRANSIT':
+        return 1;
+      case 'NOT_YET_SHIPPED':
+        return 1;
+      case 'OUT_FOR_DELIVERY':
+        return 2;
+      case 'WAITING_FOR_CUSTOMER_ACTION':
+        return 2;
+      case 'DELIVERED_TO_SENDER':
+        return 2;
+      case 'DELIVERED':
+        return 5;
+      default:
+        return -1;
     }
   }
 
   return (
     <Stack sx={{ width: '100%' }} spacing={4}>
-      <Stepper sx={{ flexDirection: 'row-reverse' }} alternativeLabel activeStep={stepperState()} connector={<ColorlibConnector />}>
+      <Stepper sx={{ flexDirection: 'row-reverse' }} alternativeLabel activeStep={stepperState()} connector={<ColorlibConnector />} >
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>

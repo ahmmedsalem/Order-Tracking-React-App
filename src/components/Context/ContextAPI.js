@@ -13,7 +13,7 @@ export function APIContextProvider({ children }) {
   useEffect(() => {
     async function fetchData() {
       const { data } = await axios.get(
-        `https://tracking.bosta.co/shipments/track/7234258`
+        `https://tracking.bosta.co/shipments/track/6636234`
       );
       setCurrentStatus(data.CurrentStatus);
       setTransitEvents(data.TransitEvents);
