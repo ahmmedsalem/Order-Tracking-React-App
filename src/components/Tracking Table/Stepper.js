@@ -60,12 +60,7 @@ const ColorlibStepIconRoot = styled('div')(({ theme, ownerState }) => ({
   }),
   ...(ownerState.completed && {
     backgroundColor:
-      'green',
-      transform: 'scale(0.5)',
-  }),
-  ...(ownerState.progress && {
-    backgroundColor:
-      'yellow',
+      '#ff0000',
       transform: 'scale(0.5)',
   }),
 }));
