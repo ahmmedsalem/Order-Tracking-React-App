@@ -21,7 +21,7 @@ const TrackingDetails = () => {
     if(currentState === 'DELIVERED') {
       return "green";
     } else 
-    if (currentState === 'CANCELLED' || currentState === "DELIVERED_TO_SENDER") {
+    if (currentState === 'CANCELLED' || currentState === "DELIVERED_TO_SENDER" ) {
       return "red";
     } else {
       return "yellow";
