@@ -46,6 +46,8 @@ const Table = () => {
           return 'تم إلغاء الشحنة';
         case 'DELIVERED':
           return 'تم التوصيل';
+        case 'RECEIVED_DELIVERY_LOCATION':
+          return 'تم استقبال مكان التوصيل';
         default:
           return 'لا توجد معلومات';
       }
