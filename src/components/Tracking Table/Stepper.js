@@ -79,14 +79,14 @@ function ColorlibStepIcon(props) {
         3: <Check/>,
         4: <Check/>,
       })
-    } else if(currentstate === "PACKAGE_RECEIVED" || currentstate === "NOT_YET_SHIPPED" || currentstate === "WAITING_FOR_CUSTOMER_ACTION" || currentstate === "DELIVERED_TO_SENDER") {
+    } else if(currentstate === "PACKAGE_RECEIVED" || currentstate === "NOT_YET_SHIPPED" || currentstate === "WAITING_FOR_CUSTOMER_ACTION") {
       return ({
         1: <Check/>,
         2: <AssignmentTurnedInIcon />,
         3: <LocalShippingIcon  sx={{ transform: 'rotateY(180deg)' }}/>,
         4: <MarkEmailReadIcon />,
       })
-    } else if(currentstate === "OUT_FOR_DELIVERY" || currentstate === "RECEIVED_DELIVERY_LOCATION" || currentstate === "IN_TRANSIT") {
+    } else if(currentstate === "OUT_FOR_DELIVERY" || currentstate === "RECEIVED_DELIVERY_LOCATION" || currentstate === "IN_TRANSIT"  || currentstate === "DELIVERED_TO_SENDER") {
       return ({
         1: <Check/>,
         2: <Check/>,
